@@ -1,0 +1,144 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Narsimha",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 2025,
+      "imdb_rating": 3
+    },
+    {
+      "id": 2,
+      "title": "Krishna",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 2010,
+      "imdb_rating": 5
+    },
+    {
+      "id": 3,
+      "title": "Rama",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 1994,
+      "imdb_rating": 5
+    },
+    {
+      "id": 4,
+      "title": "Shiva",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 2008,
+      "imdb_rating": 5
+    },
+    {
+      "id": 5,
+      "title": "Hanuman",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 1994,
+      "imdb_rating": 5
+    },
+    {
+      "id": 6,
+      "title": "Vishnu",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 2014,
+      "imdb_rating": 4
+    },
+    {
+      "id": 7,
+      "title": "Lakshmi",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 1994,
+      "imdb_rating": 4
+    },
+    {
+      "id": 8,
+      "title": "Durga",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 2019,
+      "imdb_rating": 4
+    },
+    {
+      "id": 9,
+      "title": "Ganesh",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 1972,
+      "imdb_rating": 5
+    },
+    {
+      "id": 10,
+      "title": "Kali",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 2019,
+      "imdb_rating": 4
+    },
+    {
+      "id": 11,
+      "title": "Parvati",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 2019,
+      "imdb_rating": 4
+    },
+    {
+      "id": 12,
+      "title": "Brahma",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 1997,
+      "imdb_rating": 4
+    },
+    {
+      "id": 13,
+      "title": "Saraswati",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 2000,
+      "imdb_rating": 5
+    },
+    {
+      "id": 14,
+      "title": "Indra",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 1994,
+      "imdb_rating": 4
+    },
+    {
+      "id": 15,
+      "title": "Agni",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 1999,
+      "imdb_rating": 5
+    },
+    {
+      "id": 16,
+      "title": "Surya",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 1995,
+      "imdb_rating": 4
+    },
+    {
+      "id": 17,
+      "title": "Chandra",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 1977,
+      "imdb_rating": 5
+    },
+    {
+      "id": 18,
+      "title": "Varuna",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 2012,
+      "imdb_rating": 4
+    },
+    {
+      "id": 19,
+      "title": "Yama",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 2013,
+      "imdb_rating": 4
+    },
+    {
+      "id": 20,
+      "title": "Kartikeya",
+      "thumbnail": "https://picsum.photos/200/300",
+      "release_year": 2009,
+      "imdb_rating": 5
+    }
+  ]
+}

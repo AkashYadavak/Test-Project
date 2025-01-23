@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies World</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff; /* Example color */
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Important for width */
+        }
+
+        select {
+            appearance: none; /* Remove default select styles */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat right 10px center; /* Add dropdown arrow */
+            padding-right: 30px; /* Adjust padding for arrow */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 400px) {
+            form {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Movie</h1>
+
+    <form id="movieForm" action="display.html">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" required>
+
+        <label for="releaseYearSelect">Release year</label>
+        <select id="releaseYearSelect" required></select>
+
+        <label for="rating">IMDb Rating</label>
+        <select name="rating" id="rating" required>
+            <option value="">Choose Stars</option>
+            <option value="1">★</option>
+            <option value="2">★★</option>
+            <option value="3">★★★</option>
+            <option value="4">★★★★</option>
+            <option value="5">★★★★★</option>
+        </select>
+
+        <label for="thumbnail">Thumbnail</label>
+        <input type="file" name="thumbnail" id="thumbnail" accept="image/*">
+
+        <button type="submit" id="submitbtn">Submit</button>
+    </form>
+
+    <script>
+        const startYear = 1900;
+        const endYear = new Date().getFullYear();
+        const select = document.getElementById('releaseYearSelect');
+
+        const firstOpt = document.createElement('option');
+        firstOpt.text = "Choose a year";
+        firstOpt.value = ""; // Important: Add an empty value for validation
+        select.appendChild(firstOpt);
+
+        for (let i = endYear; i >= startYear; i--) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.text = i;
+            select.appendChild(option);
+        }
+
+        const submitBtn = document.getElementById('submitbtn');
+
+        submitBtn.addEventListener('onSubmit', ()=>{
+            e.preventDefault();
+            window.location.href = "display.html";
+        })
+
+</script>
+
+</body>
+</html>

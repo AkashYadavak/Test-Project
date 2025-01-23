@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Listing</title>
+   <style>
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+   
+    body {
+
+      width: 100%;
+      height: 100%;
+      font-family: sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    /* Controls section */
+    #controls {
+      max-width: fit-content;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin: 0 auto; /* Center horizontally */
+      margin-bottom: 20px;
+    }
+
+    #sorting,
+    #filter {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    #filter {
+      flex-grow: 1;
+    }
+
+    /* Movie grid */
+    .movie-grid {
+      max-width: fit-content;
+      margin: 10px auto;
+      display: grid;
+      grid-gap: 20px;
+    }
+
+    /* Movie box */
+    .movie-box {
+      max-width: fit-content;
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .movie-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Thumbnail */
+    .thumbnail-box {
+      overflow: hidden;
+    }
+
+    .thumbnail {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    .movie-box:hover .thumbnail {
+      transform: scale(1.05);
+    }
+
+    /* Movie info */
+    .movie-box p {
+      padding: 10px;
+      margin: 0;
+      font-size: 16px;
+      /* text-align: center; */
+    }
+
+    /* Responsive adjustments */
+    @media (min-width: 992px) {
+      /* Desktop: 3 columns */
+      .movie-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 991px) and (min-width: 768px) {
+      /* Tablet: 2 columns */
+      .movie-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 767px) {
+      /* Mobile: 1 column */
+      .movie-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+   
+   </style>
+</head>
+<body>
+    <div id="controls">
+        <select id="sorting">
+            <option value="asc">Ascending</option>
+            <option value="dec">Descending</option>
+        </select>
+        <input type="text" id="filter" placeholder="Filter by title">
+    </div>
+    <div class="movie-grid" id="moviesList"></div>
+
+    <script>
+      const selectElement = document.getElementById("sorting");
+      const moviesList = document.getElementById("moviesList");
+      const filterInput = document.getElementById("filter");
+      let allMovies = []; // Store the original movie data
+
+      function sortMovies(movies, order) {
+        movies.sort((a, b) => {
+          if (order === "asc") {
+            return a.release_year - b.release_year;
+          } else {
+            return b.release_year - a.release_year;
+          }
+        });
+      }
+
+      function filterMovies(searchTerm) {
+        return allMovies.filter((movie) =>
+          movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      }
+
+      function displayMovies(movies) {
+        moviesList.innerHTML = "";
+
+        movies.forEach((movie) => {
+          const movieBox = document.createElement("div");
+          movieBox.classList.add("movie-box");
+
+          const thumbnailBox = document.createElement("div");
+          thumbnailBox.classList.add("thumbnail-box");
+
+          const thumbnail = document.createElement("img");
+          thumbnail.src = movie.thumbnail;
+          thumbnail.alt = movie.name;
+
+          thumbnailBox.appendChild(thumbnail);
+
+          const name = document.createElement("p");
+          name.textContent = `${movie.title} -- ${movie.release_year} -- ${movie.imdb_rating}★`;
+
+          movieBox.appendChild(thumbnailBox);
+          movieBox.appendChild(name);
+          moviesList.appendChild(movieBox);
+        });
+      }
+
+      function updateMovieList() {
+        const searchTerm = filterInput.value;
+        const sortOrder = selectElement.value;
+
+        let filteredMovies = filterMovies(searchTerm);
+        sortMovies(filteredMovies, sortOrder);
+
+        displayMovies(filteredMovies);
+      }
+
+      fetch("http://localhost:3000/movies")
+        .then((response) => response.json())
+        .then((movies) => {
+          allMovies = movies;
+          updateMovieList(); // Initial display
+        })
+        .catch((error) => console.error("Error fetching data:", error));
+
+      selectElement.addEventListener("change", updateMovieList);
+      filterInput.addEventListener("input", updateMovieList);
+    </script>
+  </body>
+</html>
